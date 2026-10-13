@@ -1,0 +1,156 @@
+<header class="cabeca">
+  <h2>{{ titulo }}</h2>
+  <p>Cadastro com dados pessoais e de contato seguindo o mesmo padrão de validação do formulário base.</p>
+</header>
+
+<form class="ficha" (ngSubmit)="salvar()" novalidate>
+  @if (temErro) {
+    <p class="resumo erro">{{ quantidadeDeErros }} campo(s) com erro</p>
+  } @else {
+    <p class="resumo ok">Tudo certo</p>
+  }
+
+  <fieldset>
+    <legend>Dados pessoais</legend>
+
+    <div class="campo">
+      <label for="nomeCompleto">Nome completo</label>
+      <input id="nomeCompleto" name="nomeCompleto" type="text"
+             [(ngModel)]="rascunho.nomeCompleto"
+             [class.invalido]="deveMostrar('nomeCompleto')"
+             (blur)="marcarTocado('nomeCompleto')">
+      @if (deveMostrar('nomeCompleto')) {
+        <small class="erro">{{ mensagem('nomeCompleto') }}</small>
+      }
+    </div>
+
+    <div class="campo">
+      <label for="dataNascimento">Data de nascimento</label>
+      <input id="dataNascimento" name="dataNascimento" type="date"
+             [(ngModel)]="rascunho.dataNascimento"
+             [class.invalido]="deveMostrar('dataNascimento')"
+             (blur)="marcarTocado('dataNascimento')">
+      @if (deveMostrar('dataNascimento')) {
+        <small class="erro">{{ mensagem('dataNascimento') }}</small>
+      }
+    </div>
+
+    <div class="campo">
+      <label for="cpf">Numero do CPF</label>
+      <input id="cpf" name="cpf" type="text"
+             [(ngModel)]="rascunho.cpf"
+             [class.invalido]="deveMostrar('cpf')"
+             (blur)="marcarTocado('cpf')">
+      @if (deveMostrar('cpf')) {
+        <small class="erro">{{ mensagem('cpf') }}</small>
+      }
+    </div>
+
+    <div class="campo">
+      <label for="rg">Numero do RG</label>
+      <input id="rg" name="rg" type="text"
+             [(ngModel)]="rascunho.rg"
+             [class.invalido]="deveMostrar('rg')"
+             (blur)="marcarTocado('rg')">
+      @if (deveMostrar('rg')) {
+        <small class="erro">{{ mensagem('rg') }}</small>
+      }
+    </div>
+
+    <div class="campo">
+      <label for="nomeMae">Nome da mae</label>
+      <input id="nomeMae" name="nomeMae" type="text"
+             [(ngModel)]="rascunho.nomeMae"
+             [class.invalido]="deveMostrar('nomeMae')"
+             (blur)="marcarTocado('nomeMae')">
+      @if (deveMostrar('nomeMae')) {
+        <small class="erro">{{ mensagem('nomeMae') }}</small>
+      }
+    </div>
+
+    <div class="campo">
+      <label for="nomePai">Nome do pai</label>
+      <input id="nomePai" name="nomePai" type="text"
+             [(ngModel)]="rascunho.nomePai"
+             [class.invalido]="deveMostrar('nomePai')"
+             (blur)="marcarTocado('nomePai')">
+      @if (deveMostrar('nomePai')) {
+        <small class="erro">{{ mensagem('nomePai') }}</small>
+      }
+    </div>
+
+    <div class="campo">
+      <label for="paisOrigem">Pais de origem</label>
+      <input id="paisOrigem" name="paisOrigem" type="text"
+             [(ngModel)]="rascunho.paisOrigem"
+             [class.invalido]="deveMostrar('paisOrigem')"
+             (blur)="marcarTocado('paisOrigem')">
+      @if (deveMostrar('paisOrigem')) {
+        <small class="erro">{{ mensagem('paisOrigem') }}</small>
+      }
+    </div>
+
+    <div class="campo">
+      <label for="ufOrigem">UF de origem</label>
+      <select id="ufOrigem" name="ufOrigem"
+              [(ngModel)]="rascunho.ufOrigem"
+              [class.invalido]="deveMostrar('ufOrigem')"
+              (blur)="marcarTocado('ufOrigem')">
+        <option value="">Selecione...</option>
+        @for (uf of ufs; track uf) {
+          @if (uf !== '') {
+            <option [value]="uf">{{ uf }}</option>
+          }
+        }
+      </select>
+      @if (deveMostrar('ufOrigem')) {
+        <small class="erro">{{ mensagem('ufOrigem') }}</small>
+      }
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <legend>Dados de contato</legend>
+
+    <div class="campo">
+      <label for="email">E-mail</label>
+      <input id="email" name="email" type="email"
+             placeholder="nome@exemplo.com"
+             [(ngModel)]="rascunho.email"
+             [class.invalido]="deveMostrar('email')"
+             (blur)="marcarTocado('email')">
+      @if (deveMostrar('email')) {
+        <small class="erro">{{ mensagem('email') }}</small>
+      }
+    </div>
+
+    <div class="campo">
+      <label for="telefone">Telefone</label>
+      <input id="telefone" name="telefone" type="tel"
+             placeholder="(71) 90000-0000"
+             [(ngModel)]="rascunho.telefone"
+             [class.invalido]="deveMostrar('telefone')"
+             (blur)="marcarTocado('telefone')">
+      @if (deveMostrar('telefone')) {
+        <small class="erro">{{ mensagem('telefone') }}</small>
+      }
+    </div>
+
+    <div class="campo">
+      <label for="homePage">Home page</label>
+      <input id="homePage" name="homePage" type="url"
+             placeholder="https://exemplo.com"
+             [(ngModel)]="rascunho.homePage"
+             [class.invalido]="deveMostrar('homePage')"
+             (blur)="marcarTocado('homePage')">
+      @if (deveMostrar('homePage')) {
+        <small class="erro">{{ mensagem('homePage') }}</small>
+      }
+    </div>
+  </fieldset>
+
+  <div class="acoes">
+    <button type="submit" [disabled]="temErro">Salvar</button>
+    <button type="button" class="secundario" (click)="limpar()">Limpar</button>
+  </div>
+</form>
