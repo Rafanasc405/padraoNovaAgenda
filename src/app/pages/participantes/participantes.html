@@ -1,0 +1,27 @@
+<header class="cabeca">
+  <h2>Participantes</h2>
+  <p>Quem vai a cada evento, com os dados formatados para leitura.</p>
+</header>
+
+@for (evento of eventos; track evento.id) {
+  <section class="evento">
+    <h3>{{ evento.titulo }}</h3>
+    <p class="data">
+      {{ evento.data | date:'dd/MM/yyyy' }} &middot; {{ evento.data | diasPara }}
+    </p>
+    <p class="detalhe">{{ evento.data | date:"EEEE, d 'de' MMMM" }}</p>
+
+    @for (p of participantesDo(evento.id); track p.id) {
+      <div class="participante">
+        <span class="avatar">{{ p.descricao | iniciais }}</span>
+        <div class="dados">
+          <b>{{ p.descricao }}</b>
+          <span>{{ p.telefone | telefone }}</span>
+        </div>
+        <span class="pagamento">{{ p.formaPagamento | formaPagamento }}</span>
+      </div>
+    } @empty {
+      <p class="vazio">Nenhum participante neste evento.</p>
+    }
+  </section>
+}

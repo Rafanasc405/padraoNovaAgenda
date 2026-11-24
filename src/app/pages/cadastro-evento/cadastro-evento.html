@@ -79,7 +79,7 @@
     <article class="cartao">
       <div>
         <b>{{ e.titulo }}</b>
-        <span>{{ e.data }} &middot; {{ e.local }} &middot; {{ e.vagas }} vagas</span>
+        <span>{{ e.data | date:'dd/MM/yyyy' }} &middot; {{ e.local | uppercase }} &middot; {{ e.vagas | number }} vagas</span>
         <span>{{ e.emailResponsavel }}</span>
       </div>
       <button type="button" class="secundario" (click)="remover(e.id)">Remover</button>

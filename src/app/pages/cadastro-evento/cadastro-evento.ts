@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { DatePipe, DecimalPipe, UpperCasePipe } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 import {
@@ -13,7 +14,7 @@ import { validarEvento } from '../../models/evento.validacao';
 
 @Component({
   selector: 'app-cadastro-evento',
-  imports: [FormsModule],
+  imports: [FormsModule, DatePipe, UpperCasePipe, DecimalPipe],
   templateUrl: './cadastro-evento.html',
   styleUrl: './cadastro-evento.css'
 })

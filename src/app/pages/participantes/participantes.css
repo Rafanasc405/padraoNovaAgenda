@@ -1,0 +1,102 @@
+:host {
+  display: block;
+}
+
+.cabeca {
+  text-align: center;
+  margin-bottom: 22px;
+}
+
+.cabeca h2 {
+  margin: 0 0 6px;
+  font-size: 26px;
+  letter-spacing: -0.015em;
+}
+
+.cabeca p {
+  margin: 0;
+  color: var(--tinta-2);
+  font-size: 14.5px;
+}
+
+.evento {
+  background: var(--cartao);
+  border: 1px solid var(--linha);
+  border-radius: var(--raio);
+  box-shadow: var(--sombra);
+  padding: 20px 24px;
+  margin-bottom: 20px;
+}
+
+.evento h3 {
+  margin: 0 0 4px;
+  font-size: 19px;
+}
+
+.data {
+  margin: 0;
+  font-weight: 600;
+  color: var(--azul);
+}
+
+.detalhe {
+  margin: 2px 0 14px;
+  color: var(--tinta-2);
+  font-size: 13.5px;
+  text-transform: capitalize;
+}
+
+.participante {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border-top: 1px solid var(--linha);
+  padding: 10px 0;
+}
+
+.avatar {
+  flex-shrink: 0;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: var(--azul);
+  color: var(--ouro);
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 0.04em;
+}
+
+.dados {
+  flex: 1;
+  min-width: 0;
+}
+
+.dados b {
+  display: block;
+  font-size: 15px;
+}
+
+.dados span {
+  color: var(--tinta-2);
+  font-size: 13px;
+}
+
+.pagamento {
+  font-size: 13px;
+  color: var(--tinta-2);
+  border: 1px solid var(--linha);
+  border-radius: 99px;
+  padding: 3px 11px;
+  white-space: nowrap;
+}
+
+.vazio {
+  text-align: center;
+  color: var(--tinta-3);
+  border: 1px dashed var(--linha);
+  border-radius: 8px;
+  padding: 18px;
+  margin: 0;
+}
