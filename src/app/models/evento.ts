@@ -5,6 +5,7 @@ export interface Evento {
   local: string;
   emailResponsavel: string;
   vagas: number | null;    // o <input type="number"> vazio vale null
+  descricao?: string;      // opcional: so a tela de participantes usa por enquanto
 }
 
 /** O que esta sendo digitado: tudo do Evento, menos o id (gerado ao salvar). */

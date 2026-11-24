@@ -40,3 +40,16 @@ data do evento mudar.
 transformar uma *lista*. Além disso, o pipe puro compara a referência da entrada, então um `push`
 na lista não o faz rodar de novo e a tela ficaria desatualizada. O `computed` recalcula sempre que
 os signals de que depende mudam, e o resultado fica pronto para ser reutilizado.
+
+## Desafio
+
+Os três pipes estão em `src/app/pipes/` (`titulo`, `resumo`, `mascaraEmail`), gerados pelo CLI, com
+testes, e aparecem na tela de participantes.
+
+### 3. `mascaraEmail`: LGPD e limite do pipe
+
+O e-mail é **dado pessoal**: a LGPD pede coletar e expor só o necessário (princípio da necessidade) e
+proteger o dado. Uma lista pública não precisa mostrar o endereço inteiro, então mascarar reduz a exposição.
+Mas o pipe **não protege o dado de verdade**: ele só muda o que aparece na tela. O e-mail completo
+já foi enviado pelo backend e baixado pelo navegador, e qualquer pessoa o vê na aba *Network* do DevTools,
+no JSON da resposta. A proteção real é no backend: não enviar o e-mail, ou enviá-lo já mascarado.

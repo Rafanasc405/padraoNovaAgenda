@@ -5,7 +5,10 @@
 
 @for (evento of eventos; track evento.id) {
   <section class="evento">
-    <h3>{{ evento.titulo }}</h3>
+    <h3>{{ evento.titulo | titulo }}</h3>
+    @if (evento.descricao) {
+      <p class="descricao">{{ evento.descricao | resumo:40 }}</p>
+    }
     <p class="data">
       {{ evento.data | date:'dd/MM/yyyy' }} &middot; {{ evento.data | diasPara }}
     </p>
@@ -16,7 +19,7 @@
         <span class="avatar">{{ p.descricao | iniciais }}</span>
         <div class="dados">
           <b>{{ p.descricao }}</b>
-          <span>{{ p.telefone | telefone }}</span>
+          <span>{{ p.telefone | telefone }} &middot; {{ p.email | mascaraEmail }}</span>
         </div>
         <span class="pagamento">{{ p.formaPagamento | formaPagamento }}</span>
       </div>

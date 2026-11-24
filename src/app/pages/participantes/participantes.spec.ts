@@ -49,6 +49,20 @@ describe('Participantes', () => {
     expect(texto).toContain('Encerrado');
   });
 
+  it('titulo em formato de titulo, com ligacoes minusculas', () => {
+    expect(texto).toContain('Semana de Tecnologia da Unijorge');
+    expect(texto).toContain('Oficina de Angular');
+  });
+
+  it('descricao resumida sem partir palavra', () => {
+    expect(texto).toContain('Semana de Tecnologia da Unijorge com…');
+  });
+
+  it('esconde parte do e-mail', () => {
+    expect(texto).toContain('ma***@exemplo.com');
+    expect(texto).not.toContain('maria@exemplo.com');
+  });
+
   it('nao altera o dado guardado', () => {
     expect(fixture.componentInstance.participantes[0].telefone).toBe('71988887777');
     expect(fixture.componentInstance.eventos[0].data).toBe('2026-12-04');

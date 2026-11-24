@@ -6,7 +6,10 @@ import { Participante } from '../../models/participante';
 import { DiasParaPipe } from '../../pipes/dias-para-pipe';
 import { FormaPagamentoPipe } from '../../pipes/forma-pagamento-pipe';
 import { IniciaisPipe } from '../../pipes/iniciais-pipe';
+import { MascaraEmailPipe } from '../../pipes/mascara-email-pipe';
+import { ResumoPipe } from '../../pipes/resumo-pipe';
 import { TelefonePipe } from '../../pipes/telefone-pipe';
+import { TituloPipe } from '../../pipes/titulo-pipe';
 
 /**
  * Os dados abaixo sao um array fixo: o criterio desta tela e o pipe, nao a
@@ -15,15 +18,20 @@ import { TelefonePipe } from '../../pipes/telefone-pipe';
  */
 @Component({
   selector: 'app-participantes',
-  imports: [DatePipe, DiasParaPipe, FormaPagamentoPipe, IniciaisPipe, TelefonePipe],
+  imports: [
+    DatePipe, DiasParaPipe, FormaPagamentoPipe, IniciaisPipe,
+    MascaraEmailPipe, ResumoPipe, TelefonePipe, TituloPipe
+  ],
   templateUrl: './participantes.html',
   styleUrl: './participantes.css'
 })
 export class Participantes {
 
   readonly eventos: Evento[] = [
-    { id: 1, titulo: 'Semana de Tecnologia', data: '2026-12-04', local: 'Auditório', emailResponsavel: 'tecnologia@unijorge.edu.br', vagas: 150 },
-    { id: 2, titulo: 'Oficina de Angular', data: '2026-11-12', local: 'Laboratório 1', emailResponsavel: 'angular@unijorge.edu.br', vagas: 30 },
+    { id: 1, titulo: 'semana de tecnologia da unijorge', data: '2026-12-04', local: 'Auditório', emailResponsavel: 'tecnologia@unijorge.edu.br', vagas: 150,
+      descricao: 'Semana de Tecnologia da Unijorge com palestras, oficinas e feira de projetos.' },
+    { id: 2, titulo: 'OFICINA DE ANGULAR', data: '2026-11-12', local: 'Laboratório 1', emailResponsavel: 'angular@unijorge.edu.br', vagas: 30,
+      descricao: 'Mão na massa com rotas, formulários e pipes.' },
     { id: 3, titulo: 'Palestra de Carreira', data: '2026-12-18', local: 'Sala 101', emailResponsavel: 'carreira@unijorge.edu.br', vagas: 60 }
   ];
 
